@@ -15,10 +15,10 @@ MySQL
 
 ## Change The Defination variables
 
-#define host "localhost"
-#define user "root"
-#define pass ""
-#define databasename "user"
+#### #define host "localhost"
+#### #define user "root"
+#### #define pass ""
+#### #define databasename "user"
 
 
 # 1. Table Command
