@@ -1,7 +1,7 @@
 # C-Mysql-Friend-System
 ## Friend system with C
 
-### https://asciinema.org/a/lcPOsQG9JU3GJZh8z58Gyjk36
+[![demo](https://asciinema.org/a/lcPOsQG9JU3GJZh8z58Gyjk36.png)](https://asciinema.org/a/lcPOsQG9JU3GJZh8z58Gyjk36?autoplay=1)
 
 ## System : 
 Unix, Linux
