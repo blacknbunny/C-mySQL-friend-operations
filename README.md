@@ -2,7 +2,7 @@
 ## Friend system with C
 
 ## System : 
-Linux
+Unix, Linux
 
 
 ## Compile parameters :
