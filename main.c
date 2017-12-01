@@ -6,7 +6,6 @@
 #define host "localhost"
 #define user "root"
 #define pass ""
-#define databasename "user"
 
 int main(int argc, char **argv)
 {
@@ -55,6 +54,13 @@ int main(int argc, char **argv)
 		scanf("%s", &username);
 		printf("Password : ");
 		scanf("%s", &password);
+		if(strlen(username) > 30){
+			printf("Username just can be 30 length.");
+			return 1;
+		} else if(strlen(password) > 30){
+			printf("Password just can be 30 length.");
+			return 1;
+		}
 
 		sprintf(buf, "SELECT * FROM users WHERE username = '%s' AND password = '%s'", username, password);
 		int user_login_query = mysql_query(con, buf);
@@ -71,8 +77,9 @@ int main(int argc, char **argv)
 			printf("(2) Change password\n");
 			printf("(3) Add new friends\n");
 			printf("(4) Show friend requests\n");
-			printf("(5) Accept friends\n");
-			printf("(6) Show friends\n\n");
+			printf("(5) Accept friend\n");
+			printf("(6) Show friends\n");
+			printf("(7) Delete friend\n\n");
 			printf("shell>");
 			scanf("%d", &choice_2);
 			if(choice_2 == 1){
@@ -107,6 +114,8 @@ int main(int argc, char **argv)
 						} else {
 							fprintf(stderr, "%s\n", mysql_error(con));
 						}
+					} else {
+						printf("Bad username type.");
 					}
 				}
 			} else if(choice_2 == 3){
@@ -222,6 +231,38 @@ int main(int argc, char **argv)
 				} else {
 					fprintf(stderr, "%s\n", mysql_error(con));
 				}
+			} else if(choice_2 == 7){
+				char delete_choice[20], buffer[200], buffer_2[200];
+				printf("\n\n\t\t\tDelete friend :");
+				scanf("%s", &delete_choice);
+				sprintf(buffer, "SELECT * FROM infriend WHERE friend = '%s' OR friend2 = '%s'", username, username);
+				int select_request_query = mysql_query(con, buffer);
+				MYSQL_RES *result = mysql_store_result(con);
+				MYSQL_ROW row;
+				unsigned int num_fields = mysql_num_fields(result);
+				if(select_request_query == 0){
+					while((row = mysql_fetch_row(result))){
+						for(int i = 0; i < num_fields;i++){
+							if(strcmp(row[i], username) == 0){
+							} else {
+								if(strcmp(row[i], delete_choice) == 0){
+									sprintf(buffer_2, "DELETE FROM infriend WHERE friend = '%s' OR friend = '%s'", delete_choice, delete_choice);
+									int delete_from_friend_query = mysql_query(con, buffer_2);
+									if(delete_from_friend_query == 0){
+										printf("%s was deleted.", delete_choice);
+										goto item3;
+									} else {
+										fprintf(stderr, "%s\n", mysql_error(con));
+									}
+								}
+							}
+						}
+					}
+					goto item3;
+				} else {
+					fprintf(stderr, "%s\n", mysql_error(con));
+				}
+
 			}
 		}
 	} else {
