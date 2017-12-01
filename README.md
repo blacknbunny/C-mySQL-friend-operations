@@ -8,7 +8,7 @@ Unix, Linux
 
 
 ## Compile parameters :
-```gcc main.c `mysql_config --cflags --libs` ```
+```gcc main.c -I/usr/include/mysql -L/usr/lib -lmysqlclient -lpthread -lz -lm -ldl -lssl -lcrypto ```
 
 
 ## Database :
