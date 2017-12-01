@@ -57,10 +57,10 @@ int main(int argc, char **argv)
 		printf("Password : ");
 		scanf("%s", &password);
 		if(strlen(username) > 30){
-			printf("Username just can be 30 length.");
+			printf("Username cannot be greater than 30.\n");
 			return 1;
 		} else if(strlen(password) > 30){
-			printf("Password just can be 30 length.");
+			printf("Password cannot be greater than 30.\n");
 			return 1;
 		}
 
