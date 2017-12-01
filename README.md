@@ -6,7 +6,7 @@ Linux
 
 
 ## Compile parameters :
-gcc main.c `mysql_config --cflags --libs`
+`gcc main.c `mysql_config --cflags --libs``
 
 
 ## Database :
