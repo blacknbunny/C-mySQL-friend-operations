@@ -44,13 +44,15 @@ int main(int argc, char **argv)
 		int user_query = mysql_query(con, buf);
 
 		if(user_query == 0){
-			printf("Signup Successful.\n");
+			printf("Sign up Successful.\n");
+			printf("\nSign in");
+			goto item2;
 		} else {
 			fprintf(stderr, "%s\n", mysql_error(con));
 		}
 	} else if( choice == 2){
 		char username[30], username2[30], password[30], password2[30], buf[200];
-		item2:printf("Username : ");
+		item2:printf("\nUsername : ");
 		scanf("%s", &username);
 		printf("Password : ");
 		scanf("%s", &password);
@@ -115,7 +117,7 @@ int main(int argc, char **argv)
 							fprintf(stderr, "%s\n", mysql_error(con));
 						}
 					} else {
-						printf("Bad username type.");
+						printf("Such a user includes.");
 					}
 				}
 			} else if(choice_2 == 3){
